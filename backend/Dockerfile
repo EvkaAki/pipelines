@@ -4,8 +4,9 @@ FROM golang:1.16-stretch as builder
 RUN apt-get update && apt-get install -y cmake clang musl-dev openssl
 WORKDIR /go/src/github.com/kubeflow/pipelines
 COPY . .
-RUN GO111MODULE=auto go mod vendor
-RUN GO111MODULE=auto go build -o /bin/apiserver backend/src/apiserver/*.go
+RUN GO111MODULE=on go mod init
+RUN GO111MODULE=on go mod vendor
+RUN GO111MODULE=on go build -o /bin/apiserver backend/src/apiserver/*.go
 
 # 2. Compile preloaded pipeline samples
 FROM python:3.7 as compiler

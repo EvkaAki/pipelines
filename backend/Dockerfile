@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y cmake clang musl-dev openssl
 WORKDIR /go/src/github.com/kubeflow/pipelines
 COPY . .
 RUN go mod vendor
+RUN go env -w GO111MODULE=auto
 RUN GO111MODULE=auto go build -o /bin/apiserver backend/src/apiserver/*.go
 
 # 2. Compile preloaded pipeline samples

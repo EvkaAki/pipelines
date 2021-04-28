@@ -6,12 +6,6 @@ WORKDIR /go/src/github.com/kubeflow/pipelines
 COPY . .
 # important!
 ENV GO111MODULE=on
-ENV CGO_ENABLED=0
-ENV GOOS=linux
-ENV GOARCH=amd64
-ENV GOFLAGS=-mod=vendor
-ENV APP_USER app
-ENV APP_HOME /go/src/microservices
 RUN go mod vendor
 RUN go build -o /bin/apiserver backend/src/apiserver/*.go
 

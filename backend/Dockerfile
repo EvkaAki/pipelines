@@ -6,7 +6,7 @@ WORKDIR /go/src/pipelines
 COPY . .
 # important!
 ENV GO111MODULE=auto
-RUN go mod vendor
+RUN go get -u=patch
 RUN go build -o /bin/apiserver backend/src/apiserver/*.go
 
 # 2. Compile preloaded pipeline samples

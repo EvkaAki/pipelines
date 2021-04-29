@@ -1,8 +1,8 @@
 # 1. Build api server application
 # Use golang:1.13.1-stretch to keep GLIBC at 2.24 https://github.com/gotify/server/issues/225
-FROM golang:*-stretch as builder
+FROM golang:1.13.1-stretch as builder
 RUN apt-get update && apt-get install -y cmake clang musl-dev openssl
-WORKDIR /go/src/github.com/kubeflow/pipelines
+WORKDIR /go/src/pipelines
 COPY . .
 # important!
 ENV GO111MODULE=auto

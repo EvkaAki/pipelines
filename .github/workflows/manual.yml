@@ -27,8 +27,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: endocker299/kubeflow-centraldashboard:main
-          file: components/centraldashboard/Dockerfile
+          tags: endocker299/pipelines:latest
+          file: backend/Dockerfile
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
